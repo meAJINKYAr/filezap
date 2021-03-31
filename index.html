@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filezap</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="nav navbar bg-dark text-light">
+        <h2 class="brand-logo">Filezap</h2>
+        <h4 class="justify-content-center">Perform Simple File Operations Online</h4>
+    </div><br>
+    <div class="container">
+        <form mathod="POST" action="#" class="row jumbotron">
+            <div class="col-7">
+                <h2>File Upload Form</h2>
+                <div class="form-group">
+                    <label for="mail">Email: </label>
+                    <input type="email" name="mail" id="mail" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="file">Files: </label>
+                    <input type="file" name="file" id="file" class="form-control" multiple>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+            <div class="col-4">
+                <h3>Choose From Various Services: </h3>
+                <select class="form-control">Operations
+                    <option>Make ZIP</option>
+                    <option>Add Watermark</option>
+                    <option>Convert Doc to PDF</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
