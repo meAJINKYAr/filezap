@@ -15,11 +15,6 @@ app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 # limit upload size upto 8mb
 app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 
-#code for accessing multiple files from user input
-""" for uploaded_file in request.files.getlist('file'):
-    if uploaded_file.filename != '':
-        uploaded_file.save(uploaded_file.filename) """
-
 def merge_pdfs(pdf_list,filename):
     merger = PdfFileMerger()
     for pdf in pdf_list:
@@ -27,12 +22,9 @@ def merge_pdfs(pdf_list,filename):
         if allowed_file(pdf.filename) and secure_filename(pdf.filename):
             merger.append(pdf)
     merger.write("downloads/"+filename+".pdf")
-    #filename.save(os.path.join(app.config['DOWNLOAD_FOLDER'], "combined"))
-    #filename = "combined.pdf"
     if(filename == mailid):
         filename=filename+".pdf"
         return redirect(url_for('uploaded_file', filename=filename))  
-    #return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename, as_attachment=True)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -74,9 +66,6 @@ def index():
 def submit_form():
     if request.method == 'POST':
         data=request.form.to_dict()
-        #print(request.files.getlist('file'))
-        # print(data)
-        # print(data['option'])
         if data['option']=="merge":
             try:
                 if request.files.getlist('file')==None:
