@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,redirect,send_from_directory, url_for, send_file
+from flask import Flask,render_template,request,redirect,send_from_directory, url_for
 from PyPDF2 import PdfFileReader, PdfFileWriter,PdfFileMerger
 import os,sys,glob
 from pathlib import Path
