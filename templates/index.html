@@ -16,12 +16,16 @@
         <h4 class="justify-content-center">Perform Simple File Operations Online</h4>
     </div><br>
     <div class="container">
-        <form action="submit_form"  method="POST" class="row jumbotron">
+        <form action="submit_form"  method="POST" class="row jumbotron" enctype=multipart/form-data>
             <div class="col-7">
                 <h2>File Upload Form</h2>
                 <div class="form-group">
                     <label for="mail">Email: </label>
                     <input type="email" name="mail" id="mail" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="wm_file">Watermark File: </label>
+                    <input type="file" name="wm_file" id="wm_file" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="file">Files: </label>
@@ -30,14 +34,14 @@
                 <br>
                 <button class="btn btn-primary" type="submit">submit</button>
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <h3>Choose From Various Services: </h3>
-                <select class="form-control">Operations
-                    <option>Make ZIP</option>
-                    <option>Add Watermark</option>
-                    <option>Convert Doc to PDF</option>
+                <select class="form-control" name="option" id="option">Operations
+                    <option value="zip">Make ZIP</option>
+                    <option valu="wm">Add Watermark</option>
+                    <option value="dtop">Convert Doc to PDF</option>
                 </select>
-            </div>
+            </div> -->
         </form>
     </div>
 </body>
