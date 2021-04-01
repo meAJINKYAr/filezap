@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filezap</title>
+    <title> Filezap </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bolt.ico') }}">
 </head>
 <body>
     <div class="nav navbar bg-dark text-light">
@@ -24,26 +25,38 @@
                     <label for="mail">Email: </label>
                     <input type="email" name="mail" id="mail" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="wm_file">Watermark File: (upload pdf file containing watermark)</label>
+                <div class="form-group" style="display:none" id="wm_div">
+                    <label for="wm_file">Watermark File: (add PDF containing watermark)</label>
                     <input type="file" name="wm_file" id="wm_file" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="file">Files: (upload files to be watermarked)</label>
+                    <label for="file">Files: (add PDFs to be merged/watermarked)</label>
                     <input type="file" name="file" id="file" class="form-control" multiple>
                 </div>
                 <br>
                 <button class="btn btn-primary" type="submit">submit</button>
             </div>
-            <!-- <div class="col-4">
+            <div class="col-4">
                 <h3>Choose From Various Services: </h3>
                 <select class="form-control" name="option" id="option">Operations
-                    <option value="zip">Make ZIP</option>
-                    <option valu="wm">Add Watermark</option>
-                    <option value="dtop">Convert Doc to PDF</option>
+                    <!-- <option value="zip">Make ZIP</option> -->
+                    <option value="merge" id="merge">Merge PDFs</option>
+                    <option value="wm" id="wm">Add Watermark</option>
                 </select>
-            </div> -->
+            </div>
         </form>
+        <script>
+            var option = document.getElementById('option');
+            var wm_div = document.getElementById('wm_div');
+            option.addEventListener('change',function(){
+                if(wm_div.style.display=="none"){
+                    wm_div.style.display="block"
+                }
+                else{
+                    wm_div.style.display="none"
+                }
+            })
+        </script>
     </div>
 </body>
 </html>
