@@ -53,6 +53,11 @@ def clear_directories():
             for file in files:
                 os.remove(os.path.join(root, file))
     #print("cleared dirs!")
+def write_to_file(email_id):
+    database = open('static/database.txt','a')
+    email = email_id
+    file = database.write(f'\n{email}')
+    database.close()
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -68,14 +73,18 @@ def submit_form():
         data=request.form.to_dict()
         if data['option']=="merge":
             try:
-                if request.files.getlist('file')==None:
+                #print(len(request.files.getlist('file')))
+                if len(request.files.getlist('file'))<=1:
                     print('No file attached in request')
                     return redirect('/')
-                clear_directories()
-                global mailid
-                mailid=data['mail'].rsplit('@', 1)[0].lower()
-                #print(mailid)
-                return merge_pdfs(request.files.getlist('file'),mailid)
+                #elif 'file' in request.files.getlist('file'):
+                elif len(request.files.getlist('file'))>1:
+                    clear_directories()
+                    global mailid
+                    write_to_file(data['mail'])
+                    mailid=data['mail'].rsplit('@', 1)[0].lower()
+                    #print(mailid)
+                    return merge_pdfs(request.files.getlist('file'),mailid)
             except:
                 return "Did not merge. Try again"
         elif data['option']=="wm":
